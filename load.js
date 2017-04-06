@@ -13,19 +13,19 @@ var loadPage2 = 0;
 var loadPage3 = 0;
 
 // Starter innlasting av filer
-function loadFiles(pageId_) {
+function startLoad(pageId_) {
   pageId = pageId_;
   ready = false;
   loadcount = 0;
   if (pageId == 1) {
-    car = loadImage('img/car.png', checkload);
-    sign = loadImage('img/sign.png', checkload);
-    carSound = loadSound('sound/car-sound.mp3', checkload);
+    car = loadImage('img/car.png', checkLoad);
+    sign = loadImage('img/sign.png', checkLoad);
+    carSound = loadSound('sound/car-sound.mp3', checkLoad);
   } else if (pageId == 2) {} else if (pageId == 3) {}
 }
 
 // Sjekker om alle elementene er lastet inn.
-function checkload() {
+function checkLoad() {
   loadcount++;
   if ((pageId == 1 && loadcount == loadPage1) || (pageId == 2 && loadcount == loadPage2) || (pageId == 3 && loadcount == loadPage3)) {
     ready = true;
