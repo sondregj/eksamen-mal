@@ -19,7 +19,7 @@ function setup() {
 
   // Create particle objects
   particles = [];
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 30; i++) {
     particles[i] = new Particle();
   }
 
@@ -27,26 +27,33 @@ function setup() {
   background(0);
 }
 
-function Particle() {
+function Particle(x, y) {
   this.pos = createVector(random(0, width), random(0, height));
-  this.vel = createVector(random(-2, 2), random(-2, 2));
+  this.vel = createVector(random(-1, 1), random(-1, 1));
+
+  this.edgeOffset = 25;
+
+  if (x !== undefined && y !== undefined) {
+    this.pos.x = x;
+    this.pos.y = y;
+  }
 
   this.update = function() {
     this.pos.add(this.vel);
   }
 
   this.edges = function() {
-    if (this.pos.x < 0) {
-      this.pos.x = width;
+    if (this.pos.x < -this.edgeOffset) {
+      this.pos.x = width + this.edgeOffset;
     }
-    if (this.pos.x > width) {
-      this.pos.x = 0;
+    if (this.pos.x > width + this.edgeOffset) {
+      this.pos.x = -this.edgeOffset;
     }
-    if (this.pos.y < 0) {
+    if (this.pos.y < -this.edgeOffset) {
       this.pos.y = height;
     }
-    if (this.pos.y > height) {
-      this.pos.y = 0;
+    if (this.pos.y > height + this.edgeOffset) {
+      this.pos.y = -this.edgeOffset;
     }
   }
 
@@ -89,5 +96,11 @@ function draw() {
     // Draw text
     //noStroke();
     //text("\"ART\"", width / 2, height / 2);
+  }
+}
+
+function mouseClicked() {
+  if (particles.length <= 50) {
+    particles.push(new Particle(mouseX, mouseY));
   }
 }

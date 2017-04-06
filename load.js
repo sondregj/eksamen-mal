@@ -11,6 +11,7 @@ innlasting mens andre deler av skriptet kjører.
 var loadPage1 = 3;
 var loadPage2 = 0;
 var loadPage3 = 0;
+var loadPage4 = 0;
 
 // Starter innlasting av filer
 function startLoad(pageId_) {
@@ -27,6 +28,8 @@ function startLoad(pageId_) {
   } else if (pageId == 2) {
     ready = true;
   } else if (pageId == 3) {
+    ready = true;
+  } else if (pageId == 4) {
     ready = true;
   }
 }
