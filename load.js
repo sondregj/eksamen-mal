@@ -17,11 +17,17 @@ function startLoad(pageId_) {
   pageId = pageId_;
   ready = false;
   loadcount = 0;
-  if (pageId == 1) {
+  if (pageId == 0) {
+    ready = true;
+  } else if (pageId == 1) {
     car = loadImage('img/car.png', checkLoad);
     sign = loadImage('img/sign.png', checkLoad);
     carSound = loadSound('sound/car-sound.mp3', checkLoad);
-  } else if (pageId == 2) {} else if (pageId == 3) {}
+  } else if (pageId == 2) {
+    ready = true;
+  } else if (pageId == 3) {
+    ready = true;
+  }
 }
 
 // Sjekker om alle elementene er lastet inn.
