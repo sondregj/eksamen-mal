@@ -18,8 +18,9 @@ function startLoad(pageId_) {
   ready = false;
   loadcount = 0;
   if (pageId == 0) {
-    ready = true;
+    ready = true; // Ingen elementer å laste inn
   } else if (pageId == 1) {
+    //ready = true;
     car = loadImage('img/car.png', checkLoad);
     sign = loadImage('img/sign.png', checkLoad);
     carSound = loadSound('sound/car-sound.mp3', checkLoad);

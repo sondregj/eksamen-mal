@@ -15,3 +15,22 @@ I mappen følger det med et enkelt serverprogram, kalt *http.exe* (kun Windows).
 - Lorem
 - Ipsum
 - Dolor
+
+#### Overordnet Beskrivelse
+
+#### Hensikt
+
+#### Funksjonelle krav
+
+
+
+### Flytskjema
+
+
+### Pseudokode
+
+
+### Handlingsdiagram
+
+
+### Beskrivelse av brukergrensesnitt
