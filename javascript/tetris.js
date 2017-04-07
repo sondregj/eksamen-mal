@@ -54,7 +54,7 @@ function Grid(c, r) {
     for (var x = 0; x < this.matrix.length; x++) {
       for (var y = 0; y < this.matrix[x].length; y++) {
         if (this.matrix[x][y] == 0) {
-          fill(0);
+          fill(50);
         } else if (this.matrix[x][y] == 1) {
           fill(255);
         }
@@ -65,6 +65,8 @@ function Grid(c, r) {
 }
 
 function Player() {
+  this.pos = createVector(5, 0);
+
   this.score = 0;
   this.types = {
     o: [
@@ -72,6 +74,11 @@ function Player() {
       [],
       []
     ]
+  }
+  this.dropStartTime = 0;
+
+  this.put = function() {
+
   }
 
   this.bounds = function() {
@@ -83,15 +90,26 @@ function Player() {
   }
 
   this.drop = function() {
+    // Drop player
+    this.dropStartTime = millis();
+  }
+
+  this.move = function() {
 
   }
 
   this.update = function() {
 
+    // Time drop;
+    var t = millis();
+    if (t - this.dropStartTime > 1000) {
+      this.drop();
+    }
   }
 
   this.render = function() {
-
+    fill(255);
+    rect(this.pos.x * width / grid.cols + grid.pxOffset, this.pos.y * height / grid.rows + grid.pxOffset, width / grid.cols - grid.pxOffset * 2, height / grid.rows - grid.pxOffset * 2);
   }
 }
 
@@ -107,5 +125,19 @@ function draw() {
 
     ui.update();
     ui.render();
+  }
+}
+
+
+function keyPressed() {
+  console.log(keyCode);
+  if (keyCode == 37) {
+    player.pos.x--;
+  } else if (keyCode == 38) {
+    player.pos.y--;
+  } else if (keyCode == 39) {
+    player.pos.x++;
+  } else if (keyCode == 40) {
+    player.pos.y++;
   }
 }
